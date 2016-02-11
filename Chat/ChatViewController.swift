@@ -12,11 +12,15 @@ import Parse
 class ChatViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageTextField: UITextField!
+
     var messages: [PFObject]?
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      tableView.delegate = self
+      tableView.dataSource = self
 
         NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "onTimer", userInfo: nil, repeats: true)
     }
@@ -28,8 +32,14 @@ class ChatViewController: UIViewController {
     
     func onTimer() {
         let query = PFQuery(className: "Message")
-//        query.orderByAscending("createdAt")
+        query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
+          
+          if error != nil {
+            print("error: \(error!.description)")
+            return
+          }
+          
             if let messages = messages {
                 self.messages = messages
                 self.tableView.reloadData()
@@ -58,10 +68,11 @@ class ChatViewController: UIViewController {
 //    chatMessage["username"] = 
     chatMessage["text"] = messageTextField.text
     
+    
     chatMessage.saveInBackgroundWithBlock {
       (success: Bool, error: NSError?) -> Void in
       if success {
-        print("Successfully sent")
+        self.messageTextField.text = ""
       } else {
         print("Error: \(error?.description)")
       }
@@ -78,7 +89,6 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let messages = messages {
-            print("count = \(messages.count)")
             return messages.count
         }
         return 0
