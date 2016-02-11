@@ -63,13 +63,13 @@
 		2060FA821C6D252D00F4571A /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				2060FA831C6D252D00F4571A /* AppDelegate.swift */,
 				2060FA851C6D252D00F4571A /* LoginViewController.swift */,
+				20532EF01C6D2FE50048F701 /* ChatViewController.swift */,
+				2060FA831C6D252D00F4571A /* AppDelegate.swift */,
 				2060FA871C6D252D00F4571A /* Main.storyboard */,
 				2060FA8A1C6D252D00F4571A /* Assets.xcassets */,
 				2060FA8C1C6D252D00F4571A /* LaunchScreen.storyboard */,
 				2060FA8F1C6D252D00F4571A /* Info.plist */,
-				20532EF01C6D2FE50048F701 /* ChatViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";

@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
         if usernameTextField.text!.isEmpty && passwordTextField.text!.isEmpty {
             return
         }
-        var user = PFUser()
+        let user = PFUser()
         user.username = usernameTextField.text
         user.password = passwordTextField.text
         user.email = emailTextField.text

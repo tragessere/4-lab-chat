@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -88,12 +89,39 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yZw-us-qwt">
+                                <rect key="frame" x="-9" y="117" width="333" height="451"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" textLabel="HE4-yI-OIn" style="IBUITableViewCellStyleDefault" id="oGr-Hx-Rx2">
+                                        <rect key="frame" x="0.0" y="28" width="333" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGr-Hx-Rx2" id="Gux-HX-adZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HE4-yI-OIn">
+                                                    <rect key="frame" x="15" y="0.0" width="303" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yZw-us-qwt" firstAttribute="top" secondItem="576-W4-1NE" secondAttribute="bottom" constant="15" id="47K-q4-vZo"/>
+                            <constraint firstItem="yZw-us-qwt" firstAttribute="leading" secondItem="tJp-gj-f0I" secondAttribute="leadingMargin" constant="-25" id="VFA-IQ-Doi"/>
                             <constraint firstAttribute="trailing" secondItem="i4D-yB-M1T" secondAttribute="trailing" constant="20" id="W51-Np-he8"/>
+                            <constraint firstItem="CRZ-tC-Hdd" firstAttribute="top" secondItem="yZw-us-qwt" secondAttribute="bottom" id="dYg-VW-bXQ"/>
                             <constraint firstItem="i4D-yB-M1T" firstAttribute="top" secondItem="mZm-DS-OUC" secondAttribute="bottom" constant="8" id="oG3-Zm-1SA"/>
                             <constraint firstItem="576-W4-1NE" firstAttribute="leading" secondItem="tJp-gj-f0I" secondAttribute="leading" constant="16" id="r2F-K5-g4Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yZw-us-qwt" secondAttribute="trailing" constant="-20" id="viU-MJ-Uax"/>
                             <constraint firstItem="i4D-yB-M1T" firstAttribute="leading" secondItem="576-W4-1NE" secondAttribute="trailing" constant="8" id="wVW-zU-xEG"/>
                             <constraint firstItem="576-W4-1NE" firstAttribute="top" secondItem="mZm-DS-OUC" secondAttribute="bottom" constant="8" id="wuL-Hl-B50"/>
                         </constraints>
@@ -101,11 +129,12 @@
                     <navigationItem key="navigationItem" title="Chat" id="EIt-YO-Egz"/>
                     <connections>
                         <outlet property="messageTextField" destination="576-W4-1NE" id="3kE-Yk-Byo"/>
+                        <outlet property="tableView" destination="yZw-us-qwt" id="5xY-yF-ltd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDc-Sk-kxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053" y="330"/>
+            <point key="canvasLocation" x="928" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qNd-IG-EiE">

@@ -11,12 +11,14 @@ import Parse
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var messageTextField: UITextField!
+    var messages: [PFObject]?
   
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "onTimer", userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +26,18 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func onTimer() {
+        let query = PFQuery(className: "Message")
+//        query.orderByAscending("createdAt")
+        query.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
+            if let messages = messages {
+                self.messages = messages
+                self.tableView.reloadData()
+            } else {
+                
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -47,10 +61,26 @@ class ChatViewController: UIViewController {
     chatMessage.saveInBackgroundWithBlock {
       (success: Bool, error: NSError?) -> Void in
       if success {
-        
+        print("Successfully sent")
       } else {
         print("Error: \(error?.description)")
       }
     }
   }
+}
+
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell")
+        cell?.textLabel?.text = messages![indexPath.row]["text"] as? String
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let messages = messages {
+            print("count = \(messages.count)")
+            return messages.count
+        }
+        return 0
+    }
 }
