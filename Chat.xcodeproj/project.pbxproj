@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20532EF11C6D2FE50048F701 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20532EF01C6D2FE50048F701 /* ChatViewController.swift */; };
 		2060FA841C6D252D00F4571A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2060FA831C6D252D00F4571A /* AppDelegate.swift */; };
 		2060FA861C6D252D00F4571A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2060FA851C6D252D00F4571A /* LoginViewController.swift */; };
 		2060FA891C6D252D00F4571A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2060FA871C6D252D00F4571A /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		044D2F6F6455A76F8403126D /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
 		19A2527AC844649B5A28FA4C /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20532EF01C6D2FE50048F701 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2060FA801C6D252D00F4571A /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2060FA831C6D252D00F4571A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2060FA851C6D252D00F4571A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				2060FA8A1C6D252D00F4571A /* Assets.xcassets */,
 				2060FA8C1C6D252D00F4571A /* LaunchScreen.storyboard */,
 				2060FA8F1C6D252D00F4571A /* Info.plist */,
+				20532EF01C6D2FE50048F701 /* ChatViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2060FA861C6D252D00F4571A /* LoginViewController.swift in Sources */,
+				20532EF11C6D2FE50048F701 /* ChatViewController.swift in Sources */,
 				2060FA841C6D252D00F4571A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

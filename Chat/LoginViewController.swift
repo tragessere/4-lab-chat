@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
                 let errorString = error.userInfo["error"] as? NSString
                 print(errorString)
             } else {
-                
+              self.performSegueWithIdentifier("chatSegue", sender: nil)
             }
             }
     }
@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsernameInBackground(usernameTextField.text!, password:passwordTextField.text!) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
-                // Do stuff after successful login.
+                self.performSegueWithIdentifier("chatSegue", sender: nil)
             } else {
                 // The login failed. Check error to see why.
             }
