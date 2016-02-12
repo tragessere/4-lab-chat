@@ -7,3 +7,4 @@ Owner: **Evan Tragesser**, **Qinxin Shi**
 
 ## Video Walkthrough
 
+![walkthrough video](chat-demo.gif)

@@ -21,6 +21,9 @@ class ChatViewController: UIViewController {
       
       tableView.delegate = self
       tableView.dataSource = self
+      
+      tableView.rowHeight = UITableViewAutomaticDimension
+      tableView.estimatedRowHeight = 44
 
         NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "onTimer", userInfo: nil, repeats: true)
     }
@@ -32,6 +35,7 @@ class ChatViewController: UIViewController {
     
     func onTimer() {
         let query = PFQuery(className: "Message")
+        query.includeKey("user")
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (messages: [PFObject]?, error: NSError?) -> Void in
           
@@ -65,7 +69,7 @@ class ChatViewController: UIViewController {
     }
     
     let chatMessage = PFObject(className: "Message")
-//    chatMessage["username"] = 
+    chatMessage["user"] = PFUser.currentUser()
     chatMessage["text"] = messageTextField.text
     
     
@@ -82,9 +86,16 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell")
-        cell?.textLabel?.text = messages![indexPath.row]["text"] as? String
-        return cell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell") as! ChatCell
+        cell.chatTextLabel.text = messages![indexPath.row]["text"] as? String
+        
+        if let user = messages![indexPath.row]["user"] as? PFUser {
+          cell.userLabel.text = user.username
+        } else {
+          cell.userLabel.text = ""
+        }
+      
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
